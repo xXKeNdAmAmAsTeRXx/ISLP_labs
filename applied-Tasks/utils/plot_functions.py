@@ -1,5 +1,7 @@
 
 import matplotlib.pyplot as plt
+import numpy as np
+
 
 def plot_data(trainX, trainY, testX, testY,
                             xlabel='X', ylabel='Y',
@@ -65,4 +67,38 @@ def plot_loss(loss_values, title="Loss over Epochs", xlabel="Epoch", ylabel="Los
     if save_path:
         plt.savefig(save_path, bbox_inches='tight')
     
+    plt.show()
+
+def plot_line_on_data(x, y, slope, intercept, title="Linear Fit", xlabel="X", ylabel="Y"):
+    """
+    Plots a scatter plot of the data and overlays a line with given slope and intercept.
+    
+    Parameters:
+        x (array-like): X data
+        y (array-like): Y data
+        slope (float): Line slope
+        intercept (float): Line intercept
+        title (str): Plot title
+        xlabel (str): X-axis label
+        ylabel (str): Y-axis label
+    """
+    
+
+
+    # Scatter plot of data
+    plt.scatter(x, y, color='blue', label='Data Points')
+    
+    # Line values
+    x_line = np.linspace(min(x), max(x), 100)
+    y_line = slope * x_line + intercept
+    
+    # Plot the line
+    plt.plot(x_line, y_line, color='red', label=f'Line: y = {slope:.2f}x + {intercept:.2f}')
+    
+    # Labels and title
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.title(title)
+    plt.legend()
+    plt.grid(True)
     plt.show()
