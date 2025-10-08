@@ -38,3 +38,31 @@ def plot_data(trainX, trainY, testX, testY,
     plt.tight_layout(rect=[0, 0, 1, 0.95])
     plt.show()
 
+
+import matplotlib.pyplot as plt
+
+def plot_loss(loss_values, title="Loss over Epochs", xlabel="Epoch", ylabel="Loss", save_path=None):
+    """
+    Plots the loss values over epochs.
+
+    Parameters:
+    - loss_values (list or array): Sequence of loss values.
+    - title (str): Title of the plot.
+    - xlabel (str): Label for the x-axis.
+    - ylabel (str): Label for the y-axis.
+    - save_path (str or None): If provided, saves the plot to the given path.
+    """
+    epochs = range(1, len(loss_values) + 1)
+    
+    plt.figure(figsize=(8, 5))
+    plt.plot(epochs, loss_values, marker=None, linestyle='-', color='r', label='Loss', linewidth=0.8)
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.grid(True)
+    plt.legend()
+    
+    if save_path:
+        plt.savefig(save_path, bbox_inches='tight')
+    
+    plt.show()
