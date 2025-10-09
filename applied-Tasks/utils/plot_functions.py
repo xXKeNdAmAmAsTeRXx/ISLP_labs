@@ -102,3 +102,28 @@ def plot_line_on_data(x, y, slope, intercept, title="Linear Fit", xlabel="X", yl
     plt.legend()
     plt.grid(True)
     plt.show()
+
+def plot_quadratic(a, b, c, x, y):
+    """
+    Plots a quadratic function y = a*x^2 + b*x + c along with scatter points.
+
+    Parameters:
+    a, b, c : coefficients of the quadratic function
+    x, y    : arrays of data points to scatter
+    """
+    # Scatter the given points
+    plt.scatter(x, y, color='blue', label='Data points')
+    
+    # Generate smooth x values for plotting the quadratic curve
+    x_curve = np.linspace(min(x), max(x), 500)
+    y_curve = a * x_curve**2 + b * x_curve + c
+    
+    # Plot the quadratic curve
+    plt.plot(x_curve, y_curve, color='red', label=f'Quadratic: {a}x² + {b}x + {c}')
+    
+    # Add labels and legend
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('Quadratic Function with Scatter Points')
+    plt.legend()
+    plt.show()
